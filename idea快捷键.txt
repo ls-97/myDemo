@@ -10,3 +10,4 @@ Ctrl+y	:	删除整行
 ctrl+o	:	重写父类方法
 ctrl+i	:	重写接口方法
 alt+ins	:	getter   and setter
+122
