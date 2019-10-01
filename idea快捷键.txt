@@ -1,13 +1,13 @@
-sout	:	Êä³öÓï¾ä
-psvm	:	Êä³öÖ÷·½·¨
-fori	:	Êä³öforÑ­»·
-iter	:	foreachÑ­»·
-ctrl+shift+u	: 	´óĞ¡Ğ´×ª»»
-ctrl+shift+»Ø³µ	£º	×Ô¶¯²¹È«·ûºÅ£¨;£©
-ctrl+alt+o 	:	É¾³ıÎŞÓÃµÄ°ü
-ctrl+alt+l		:	¸ñÊ½»¯´úÂë
-Ctrl+y	:	É¾³ıÕûĞĞ
-ctrl+o	:	ÖØĞ´¸¸Àà·½·¨
-ctrl+i	:	ÖØĞ´½Ó¿Ú·½·¨
+sout	:	è¾“å‡ºè¯­å¥
+psvm	:	è¾“å‡ºä¸»æ–¹æ³•
+fori	:	è¾“å‡ºforå¾ªç¯
+iter	:	foreachå¾ªç¯
+ctrl+shift+u	: 	å¤§å°å†™è½¬æ¢
+ctrl+shift+å›è½¦	ï¼š	è‡ªåŠ¨è¡¥å…¨ç¬¦å·ï¼ˆ;ï¼‰
+ctrl+alt+o 	:	åˆ é™¤æ— ç”¨çš„åŒ…
+ctrl+alt+l		:	æ ¼å¼åŒ–ä»£ç 
+Ctrl+y	:	åˆ é™¤æ•´è¡Œ
+ctrl+o	:	é‡å†™çˆ¶ç±»æ–¹æ³•
+ctrl+i	:	é‡å†™æ¥å£æ–¹æ³•
 alt+ins	:	getter   and setter
-122
+122 shsfgh
