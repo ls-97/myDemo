@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:mvc="http://www.springframework.org/schema/mvc"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://www.springframework.org/schema/mvc
+							http://www.springframework.org/schema/mvc/spring-mvc.xsd
+							http://www.springframework.org/schema/aop
+							http://www.springframework.org/schema/aop/spring-aop.xsd
+							http://www.springframework.org/schema/tx
+							http://www.springframework.org/schema/tx/spring-tx.xsd
+							http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context.xsd">
+		<!-- 注解扫描器 -->
+		<context:component-scan base-package="com.igeek">
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<!-- 加载数据库配置文件-->
+			<context:property-placeholder location="classpath:config/db.properties"/>
+		<!-- 配置数据源 -->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+			<property name="driverClass" value="${driver_class}"></property>
+			<property name="jdbcUrl" value="${url}"></property>
+			<property name="user" value="${user}"></property>
+			<property name="password" value="${password}"></property>
+			<!-- <property name="maxActive" value="10"></property> -->
+		</bean>
+		<!-- 事务管理 -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>
+		<!-- 启动声明式事务驱动 -->
+		<tx:annotation-driven transaction-manager="transactionManager"/>
+		
+		<!-- SqlSessionFactory -->				
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<!-- 数据库连接池 -->
+			<property name="dataSource" ref="dataSource"></property>
+			<!-- 扫描pojo -->
+			<property name="typeAliasesPackage" value="com.igeek.pojo"></property>
+			<!-- 扫描映射文件 -->
+			<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+			<!-- 加载mybatis的全局配置文件
+			<property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
+			 -->
+		</bean>
+		<!-- 配置扫描dao包 -->
+		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			<property name="basePackage" value="com.igeek.dao"></property>
+			<!-- 使用sqlSessionFactoryBeanName 防止出现spring扫描组件失效问题 -->
+			<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+		</bean>
+		<!-- <bean id="gson" class="com.igeek.gson" scope="prototype"></bean> -->
+		<!-- mapper扫描器 
+		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			 扫描的包路径，如果需要扫描多个包，中间用半角 “,”隔开 
+			<property name="basePackage" value="com.ssm.mapper"></property>
+			<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+		</bean>-->
+		
+</beans>

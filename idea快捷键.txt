@@ -1,0 +1,12 @@
+sout	:	输出语句
+psvm	:	输出主方法
+fori	:	输出for循环
+iter	:	foreach循环
+ctrl+shift+u	: 	大小写转换
+ctrl+shift+回车	：	自动补全符号（;）
+ctrl+alt+o 	:	删除无用的包
+ctrl+alt+l		:	格式化代码
+Ctrl+y	:	删除整行
+ctrl+o	:	重写父类方法
+ctrl+i	:	重写接口方法
+alt+ins	:	getter   and setter
